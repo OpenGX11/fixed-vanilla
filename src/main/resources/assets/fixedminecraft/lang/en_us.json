@@ -30,6 +30,7 @@
     "gamerule.iceMeltInNether": "Ice melts in the Nether",
     "gamerule.insomniaSleepRequirement": "Need Insomnia in order to Sleep",
     "gamerule.requireTotemUse": "Need to actively use a Totem for it to function",
+    "gamerule.staminaDrainSpeed": "Stamina Drain Speed",
     "advancements.husbandry.bake_bread.title": "Bakers Delight",
     "advancements.husbandry.bake_bread.description": "Turn Wheat into Bread",
     "advancements.husbandry.bake_cake.title": "The Lie",
