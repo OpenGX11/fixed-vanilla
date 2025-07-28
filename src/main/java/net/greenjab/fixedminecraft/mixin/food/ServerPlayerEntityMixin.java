@@ -69,7 +69,7 @@ public abstract class ServerPlayerEntityMixin extends Entity
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void shieldDrainsStamina(CallbackInfo ci) {
         ServerPlayerEntity SPE = (ServerPlayerEntity) (Object)this;
-        if (SPE.isBlocking()) SPE.addExhaustion(0.03f);
+        if (SPE.isBlocking()) SPE.addExhaustion(0.01f);
     }
 
     @ModifyConstant(method = "jump", constant = @Constant(floatValue = 0.05f))
