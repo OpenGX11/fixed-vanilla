@@ -19,34 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin
 {
-    @Shadow
-    public abstract boolean isUsingItem();
-
-    @Shadow
-    public abstract ItemStack getStackInHand(Hand hand);
-
-    @Shadow
-    public abstract Hand getActiveHand();
-
-    @Shadow
-    public abstract void stopUsingItem();
-
-    @Inject(method = "damage", at = @At(value = "INVOKE",
-                                        target = "Lnet/minecraft/entity/damage/DamageSource;isIn(Lnet/minecraft/registry/tag/TagKey;)Z", ordinal = 5
-    ))
-    private void eatCancelling(ServerWorld world, DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (this.isUsingItem()) {
-            if (this.getStackInHand(this.getActiveHand()).getComponents().contains(DataComponentTypes.FOOD)) {
-                LivingEntity LE = (LivingEntity)(Object)this;
-                if (LE.getWorld().getDifficulty().getId()>1) {
-                    if (source.getAttacker()!=null) {
-                        this.stopUsingItem();
-                    }
-                }
-            }
-        }
-    }
-
     @Redirect(method = "getBlockingItem", at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/component/type/BlocksAttacksComponent;getBlockDelayTicks()I"
